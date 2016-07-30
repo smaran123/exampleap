@@ -97,6 +97,9 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omnicontacts (0.3.7)
+      json
+      rack
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -172,6 +175,7 @@ DEPENDENCIES
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
   omniauth-facebook (~> 4.0)
+  omnicontacts
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

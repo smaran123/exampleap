@@ -1,55 +1,63 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
-  # GET /movies
-  # GET /movies.json
-  def index
-    @movies = Movie.all
-  end
-
-  # GET /movies/1
-  # GET /movies/1.json
-  def show
-  end
-
-  # GET /movies/new
-  def new
-    @movie = Movie.new
-  end
-
-  # GET /movies/1/edit
-  def edit
-  end
-
-  # POST /movies
-  # POST /movies.json
-  def create
-    @movie = Movie.new(movie_params)
-
+  def contact_yahoo
+    @contacts = request.env['omnicontacts.contacts']
     respond_to do |format|
-      if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
-        format.json { render :show, status: :created, location: @movie }
-      else
-        format.html { render :new }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
+      format.html 
     end
   end
 
-  # PATCH/PUT /movies/1
-  # PATCH/PUT /movies/1.json
-  def update
+  def contact
+    @contacts = request.env['omnicontacts.contacts']
     respond_to do |format|
-      if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
-        format.json { render :show, status: :ok, location: @movie }
-      else
-        format.html { render :edit }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
+      format.html 
+
+    end
+    end
+    def index
+      @movies = Movie.all
+    end
+
+    def show
+    end
+
+
+    def new
+      @movie = Movie.new
+    end
+
+
+    def edit
+    end
+
+
+
+    def create
+      @movie = Movie.new(movie_params)
+
+      respond_to do |format|
+        if @movie.save
+          format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+          format.json { render :show, status: :created, location: @movie }
+        else
+          format.html { render :new }
+          format.json { render json: @movie.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
+
+    def update
+      respond_to do |format|
+        if @movie.update(movie_params)
+          format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+          format.json { render :show, status: :ok, location: @movie }
+        else
+          format.html { render :edit }
+          format.json { render json: @movie.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 
   # DELETE /movies/1
   # DELETE /movies/1.json
@@ -71,4 +79,4 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :description, :movie_length, :director, :rating)
     end
-end
+  end
